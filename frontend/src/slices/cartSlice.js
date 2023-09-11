@@ -10,7 +10,6 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      // The item to add to the cart
       const item = action.payload;
 
       const existItem = state.cartItems.find((x) => x._id === item._id);
@@ -32,6 +31,10 @@ const cartSlice = createSlice({
     },
     saveShippingAddress: (state, action) => {
       state.shippingAddress = action.payload;
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
+    savePaymentMethod: (state, action) => {
+      state.paymentMethod = action.payload;
       localStorage.setItem("cart", JSON.stringify(state));
     },
   },
